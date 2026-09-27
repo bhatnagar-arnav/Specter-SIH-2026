@@ -1,72 +1,98 @@
-# TriNetra: AI-Powered Criminal Network Analysis System
+<div align="center">
+  
+# SPECTER
+**Evidence-Driven Threat Intelligence & Correlation Platform**
 
-TriNetra is an end-to-end prototype designed for the SIH 2026 hackathon. It ingests raw FIR texts, extracts key entities using a deterministic NLP pipeline, and visualizes the criminal network using an interactive knowledge graph.
+[![Status](https://img.shields.io/badge/Status-Air_Gapped_MVP-success.svg)](#)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](#)
+[![React](https://img.shields.io/badge/React-Next.js-cyan.svg)](#)
+[![Neo4j](https://img.shields.io/badge/Neo4j-Graph_DB-green.svg)](#)
+[![License](https://img.shields.io/badge/License-MIT-gray.svg)](#)
 
-## Tech Stack
-- **Frontend**: React.js (Vite), vis.js (Network Graph), Tailwind CSS
-- **Backend**: FastAPI (Python), Pydantic
-- **Database**: Neo4j
-- **NLP Engine**: Python pipeline placeholder (ready for IndicBERT)
+*Engineered for Smart India Hackathon 2026 (Problem Statement: SIH26151 — Dark Web De-anonymization).*
 
-## Prerequisites
-- Node.js (v18+)
-- Python (3.9+)
-- Neo4j Desktop or Docker container
+</div>
 
-## Setup Instructions
+Specter is an air-gapped, AI-driven forensic intelligence platform engineered to pierce the veil of anonymity across Tor and I2P networks. Rather than simply monitoring for compromised data, Specter mathematically links anonymous dark web aliases to real-world infrastructure and clear-web footprints by exploiting operational security (OPSEC) failures, cryptocurrency flows, and linguistic fingerprints.
 
-### 1. Database Setup (Neo4j)
-You need a running instance of Neo4j. The easiest way is using Docker:
-```bash
-docker run \
-    --name neo4j \
-    -p7474:7474 -p7687:7687 \
-    -d \
-    -e NEO4J_AUTH=neo4j/password \
-    neo4j:latest
-```
-*Note: Ensure the database is completely empty on startup as per the system rules.*
+---
 
-### 2. Backend Setup
-Navigate to the `backend` directory and set up the Python environment:
-```bash
-cd backend
-python -m venv venv
-# On Windows
-venv\Scripts\activate
-# On macOS/Linux
-source venv/bin/activate
+## 📸 Platform Interface & Graph Topography
 
-# Install dependencies
-pip install -r requirements.txt
+> **<img width="1920" height="971" alt="Screenshot 2026-09-28 001719" src="https://github.com/user-attachments/assets/98b1e77f-111d-466e-8b8f-c4f06c240e05" />**
 
-# Start the FastAPI server
-uvicorn main:app --reload --port 8000
-```
+> *Role-based authentication terminal configured for air-gapped environments with mandatory access audit logging.*
 
-### 3. Frontend Setup
-Open a new terminal, navigate to the `frontend` directory:
-```bash
-cd frontend
+> **<img width="1920" height="980" alt="Screenshot 2026-09-28 001711" src="https://github.com/user-attachments/assets/fc6379a2-146f-4533-bb2a-1885efae063f" />**
 
-# Install dependencies
-npm install
+> *Caption: The Specter air-gapped analyst terminal during active threat ingestion.*
 
-# Start the React development server
-npm run dev
-```
+> **<img width="1920" height="968" alt="Screenshot 2026-09-28 001702" src="https://github.com/user-attachments/assets/6f384b6e-dbe3-475a-b5ca-8a9c52f1ea0c" />**
+> *Caption: .Intercept Upload & NLP Trigger — Ingestion interface allowing direct loading of unformatted forensic intercepts (.txt) for local, offline transformer processing.*
+> **<img width="1920" height="968" alt="Screenshot 2026-09-28 001650" src="https://github.com/user-attachments/assets/44a29f3b-03e3-4187-b318-0a0662b51ea2" />**
 
-## System Rules Enforced
-1. **Strict Anti-Hallucination**: The NLP pipeline uses a temperature of `0.0`. Missing entities return empty arrays `[]` rather than placeholders like "N/A".
-2. **Data Sovereignty**: No external API calls are made. The system is designed to run entirely offline/on-premise.
-3. **Human-in-the-Loop (HITL)**: Uploaded FIRs are presented in a split-screen view. The left pane shows the read-only raw text, and the right pane shows an editable form. Data is only committed to Neo4j after explicit user confirmation.
-4. **Graph Visualization**: The graph is rendered with fixed shapes/colors for different entity types (Square for Cases, Circles for Persons, Triangles for Phones, Hexagons for Locations). Clicking on a connected FIR node seamlessly transitions the UI to that specific case.
+> *Caption: Automated Entity Extraction & Forensic Hashing — Simultaneous execution of IndicBERT and regex extraction against raw intercepts, generating immutable SHA-256 integrity checksums and ISO-8601 timestamps alongside structured entity parsing.*
 
-## Usage Guide
-1. Open the frontend in your browser (usually `http://localhost:5173`).
-2. Click **"Upload FIR"** in the sidebar. Upload a text file (e.g., `.txt`).
-3. The system will extract entities and display them in the right pane form.
-4. You can edit, add, or remove extracted entities in the form.
-5. Click **"Commit to Knowledge Graph"** to save the data to Neo4j.
-6. The graph will render below the split-screen showing nodes and relationships.
-7. Upload multiple connected FIRs to see the graph link entities across different cases. Click on a Case node to dynamically load it.
+---
+
+## 🧠 Core Architecture & Workflow
+
+Specter is built specifically for defense-sector operational security. It operates as the "Intelligence Brain" sitting securely behind an agency's data harvesters.
+
+1. **Ingestion:** Analysts feed raw, unstructured intercepts (forum dumps, Telegram chats, hidden service logs) into the isolated terminal.
+2. **AI Extraction:** A locally cached HuggingFace IndicBERT model, fused with a fault-tolerant regex pipeline, extracts high-value cyber-artifacts: BTC/XMR/ETH wallets, IPv4 addresses, `.onion` URLs, PGP fingerprints, and threat actor aliases.
+3. **Graph Mapping:** Extracted entities are instantly mapped into a **Neo4j** graph database, dynamically forming `TRANSACTED_WITH`, `USED_SLANG`, and `COMMUNICATED_ON` relationships.
+4. **Nexus Detection:** The **NetworkX** analytics engine continuously calculates the Betweenness Centrality of the network to isolate the structural linchpin connecting isolated criminal cells.
+
+---
+
+## ✨ Key Features
+
+*   **Linguistic Fingerprinting (Stylometry):** Profiles threat actors by behavioral writing habits. If disparate aliases share a rare combination of regional slang or hacker jargon, the graph mathematically links them as a single human operator.
+*   **Betweenness Centrality Nexus Detection:** Specter does not just map data; it calculates the mastermind. The system automatically highlights the "Red Dot" (Nexus)—the critical IP address, intermediary wallet, or hidden broker keeping the operation alive.
+*   **Forensic Chain of Custody:** Every raw intelligence intercept is stamped with a SHA-256 cryptographic checksum and UTC ISO-8601 timestamp upon ingestion to ensure data integrity and legal defensibility.
+*   **STIX 2.1 Interoperability:** Analysts can export the live de-anonymization graph into a globally standardized STIX-compliant JSON bundle, ready for immediate integration with enterprise SIEMs (e.g., Splunk) and national CERT grids.
+
+---
+
+## 🏗️ Tech Stack
+
+### Backend & Analytics
+*   **FastAPI (Python):** High-throughput asynchronous API routing.
+*   **Neo4j:** Multi-relational graph database mapping deep intelligence networks.
+*   **NetworkX:** Complex graph theory mathematics for centrality calculations.
+*   **IndicBERT & Custom CTI Regex:** High-recall Named Entity Recognition (NER) on non-standard hacker vernacular.
+
+### Frontend Interface
+*   **React & Next.js:** Fast, component-driven UI architecture.
+*   **Tailwind CSS:** Clean, dark-mode-first styling for extended analyst sessions.
+*   **vis.js:** Interactive, physics-based node topography for network visualization.
+
+### Infrastructure
+*   **Docker & Docker Compose:** 100% containerized deployment (`specter_airgap_net`) ensuring offline viability.
+
+---
+
+## 🚀 Quick Start (Air-Gapped Deployment)
+
+Specter is designed to run completely offline on closed networks. Ensure you have **Docker** and **Docker Compose** installed on your host machine.
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/bhatnagar-arnav/Specter-SIH-2026.git](https://github.com/bhatnagar-arnav/Specter-SIH-2026.git)
+   cd Specter-SIH-2026
+
+2.Spin up the isolated stack:
+
+Bash
+docker-compose up --build -d
+Note: On the initial build, the backend container will download the IndicBERT NLP weights. Once cached in the container volume, the system can run indefinitely without external internet access.
+
+3.Access the Analyst Terminal:
+Open your browser and navigate to:
+
+Plaintext
+http://localhost:3000
+
+🏆 About the Project
+Specter was conceptualized and developed by Team HandCoded. The prototype secured a winning position among 50 competing teams at the internal UPES Smart India Hackathon qualifiers, advancing to represent the university for SIH26151.
