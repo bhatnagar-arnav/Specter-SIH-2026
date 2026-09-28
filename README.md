@@ -96,3 +96,9 @@ http://localhost:3000
 
 🏆 About the Project
 Specter was conceptualized and developed by Team Aletheia. The prototype secured a winning position among 50 competing teams at the internal UPES Smart India Hackathon qualifiers , advancing to represent the university for SIH26151.
+
+
+
+
+
+
